@@ -40,7 +40,8 @@ autocmd("BufWritePre", {
     if event.match:match("^%w%w+://") then
       return
     end
-    local file = vim.loop.fs_realpath(event.match) or event.match
+    local uv = vim.uv or vim.loop
+    local file = uv.fs_realpath(event.match) or event.match
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
   end,
   desc = "Auto-create directory",
@@ -115,7 +116,8 @@ autocmd("BufReadPre", {
   group = performance,
   pattern = "*",
   callback = function()
-    local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(0))
+    local uv = vim.uv or vim.loop
+    local ok, stats = pcall(uv.fs_stat, vim.api.nvim_buf_get_name(0))
     if ok and stats and stats.size > 100000 then
       vim.cmd("syntax clear")
     end
