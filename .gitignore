@@ -1,0 +1,45 @@
+# Neovim
+*.swp
+*.swo
+*.swn
+.DS_Store
+
+# Lazy.nvim
+lazy-lock.json
+
+# Mason
+mason-lock.json
+
+# Session files
+*.vim
+Session.vim
+.session
+
+# Logs
+*.log
+
+# Compiled Lua
+*.luac
+
+# Generated help tags
+doc/tags
+
+# OS files
+Thumbs.db
+Desktop.ini
+
+# IDE
+.vscode/
+.idea/
+
+# Backup files
+*~
+*.bak
+*.tmp
+
+# Tree-sitter parsers (auto-installed)
+parser/
+
+# Other
+undodir/
+.luarc.json
