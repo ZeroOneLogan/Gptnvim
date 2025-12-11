@@ -182,7 +182,8 @@ return {
         -- Enable inlay hints if available
         if client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
           nmap("<leader>th", function()
-            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }))
+            local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
+            vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
           end, "[T]oggle Inlay [H]ints")
         end
 
